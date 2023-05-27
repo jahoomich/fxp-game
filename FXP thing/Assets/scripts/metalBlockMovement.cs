@@ -4,50 +4,40 @@ using UnityEngine;
 
 public class metalBlockMovement : MonoBehaviour
 {
-    //reference to the metal block (the tilemap specifically)
-    [SerializeField] public GameObject metalBlockTilemap;
-    //reference to the metal block's starting position.
-    public Vector3 initialPosition;
-    //reference to where the metal block will end up.
-    public Vector3 endPosition;
+    public GameObject metalBlock;
+    [SerializeField] public Vector3 blockPosition;
+    public float moveSpeed;
 
-    public Vector3 startPosition;
-    //reference to how far the block will move. 
-    public int moveAmount;
+    void moveLeft()
+    {
+        metalBlock.transform.Translate((-0.5f * moveSpeed), (-0.25f * moveSpeed), 0f);
+    }
 
-    // Start is called before the first frame update
+    void moveDown()
+    {
+        metalBlock.transform.Translate((0.5f * moveSpeed), (-0.25f * moveSpeed), 0f);
+    }
+
+    void moveRight()
+    {
+        metalBlock.transform.Translate((0.5f * moveSpeed), (0.25f * moveSpeed), 0f);
+    }
+
+    void moveUp()
+    {
+        metalBlock.transform.Translate((-0.5f * moveSpeed), (0.25f * moveSpeed), 0f);
+    }
+    
     void Start()
     {
-        initialPosition = new Vector3(0f, 0f, 0f);
-        
-        moveAmount = 2;
-        
+        moveSpeed = 0.01f;
+        blockPosition = new Vector3 (1.5f, -0.75f, 0f);
+        metalBlock.transform.position = blockPosition;
     }
 
-    public void moveBlockForward()
+    void Update() 
     {
-        startPosition = initialPosition;
-        
-        endPosition = new Vector3((startPosition.x + (moveAmount * -0.5f)), (startPosition.y + (moveAmount * 0.25f)), 0f);
-        
-
-       if(metalBlockTilemap.transform.position != endPosition)
-        {
-            metalBlockTilemap.transform.Translate(-0.005f,0.0025f,0f);
-            
-        } 
-    }
-
-    public void moveBlockBackward()
-    {
-        startPosition = metalBlockTilemap.transform.position;
-        
-        endPosition = new Vector3((startPosition.x + (moveAmount * 0.5f)), (startPosition.y + (moveAmount * -0.25f)), 0f);
-        
-        if ((metalBlockTilemap.transform.position != endPosition) && (metalBlockTilemap.transform.position != initialPosition))
-        {
-            metalBlockTilemap.transform.Translate(0.005f, -0.0025f, 0f);
-        }
+        moveDown();
     }
 
     
