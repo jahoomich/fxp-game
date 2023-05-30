@@ -32,51 +32,51 @@ public class magnetUpMovement : MonoBehaviour
         metalBlockMovement = metalBlock.GetComponent<metalBlockMovement>();
     }
 
-    public bool upCheckRange(Vector3 position)
-    {
-        for (int i = 0; i < magnetUpRange.range.Length; i++)
-        {
-            if (position == magnetUpRange.range[i])
-            {
-                return true;
-            }
-            else
-            {
-                return false; 
-            }
-        }
-        return false;
-    }
+    //public bool upCheckRange(Vector3 position)
+    //{
+        //for (int i = 0; i < magnetUpRange.range.Length; i++)
+        //{
+            //if (position == magnetUpRange.range[i])
+            //{
+                //return true;
+            //}
+            //else
+            //{
+                //return false; 
+           //}
+       // }
+        //return false;
+    //}
 
-    void upMagnetMovement()
-    {
+    //void upMagnetMovement()
+    //{
         //upwards movement
-        if ((inRange == true) && (metalBlock.transform.position != magnetUpRange.range[magnetUpRange.rangeEnd - 1]) && (powerOn == true) && playerState.isPositive == true)
-        {
+       // if ((inRange == true) && (metalBlock.transform.position != magnetUpRange.range[magnetUpRange.rangeEnd - 1]) && (powerOn == true) && playerState.isPositive == true)
+        //{
 
             
-            StartCoroutine(upMove());
+            //StartCoroutine(upMove());
 
             
                 
-        }
+        ///}
         //else if ((inRange = true) && (metalBlock.transform.position.x < magnetUpRange.range[magnetUpRange.rangeEnd - 1].x) && (metalBlock.transform.position.y > magnetUpRange.range[magnetUpRange.rangeEnd - 1].y) && (powerOn == true) && playerState.isNegative == true)
 
-    }
+    //}
 
     
 
-    private IEnumerator upMove()
-    {
-        endPosition = new Vector3((metBlockTransform.position.x + -(magnetUpRange.xInc * moveAmount)), (metBlockTransform.position.y + (magnetUpRange.yInc * moveAmount)), 0f);
+    //private IEnumerator upMove()
+    //{
+        //endPosition = new Vector3((metBlockTransform.position.x + -(magnetUpRange.xInc * moveAmount)), (metBlockTransform.position.y + (magnetUpRange.yInc * moveAmount)), 0f);
 
-        while (metalBlock.transform.position != endPosition)
-        {
-            metalBlockMovement.moveUp();
-            yield return null;
-        }
+        //while (metalBlock.transform.position != endPosition)
+        //{
+            //metalBlockMovement.moveUp();
+            //yield return null;
+        //}
             
-    }
+    //}
 
     //private IEnumerator downMove()
     //{
@@ -112,18 +112,18 @@ public class magnetUpMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (upCheckRange(metalBlock.transform.position) == true)
-        {
-            inRange = true;
-        }
-        else
-        {
-            inRange = false;
-        }
+    //void Update()
+    //{
+        //if (upCheckRange(metalBlock.transform.position) == true)
+        //{
+            //inRange = true;
+        //}
+       // else
+        //{
+            //inRange = false;
+        //}
         
-        isPowered(); 
-        upMagnetMovement();
-    }
+        //isPowered(); 
+        //upMagnetMovement();
+    //}
 }
