@@ -7,7 +7,7 @@ public class playerMovement : MonoBehaviour
 {
     
     [SerializeField] public GameObject[] square = new GameObject [4];
-    public bool isUp, isDown, isLeft, isRight;
+    
     
     
 
@@ -38,47 +38,31 @@ public class playerMovement : MonoBehaviour
         //upper box
         if (playerVert > 0)
         {
-            isUp = true;
             arrayLoop();
             square[0].GetComponent<BoxCollider2D>().enabled = true;
         }
-        else
-        {
-            isUp = false;
-        }
+       
         //down box
         if (playerVert < 0)
         {
-            isDown = true;
             arrayLoop();
             square[1].GetComponent<BoxCollider2D>().enabled = true;
         }
-        else
-        {
-            isDown = false; 
-        }
+     
         //right box
         if (playerHori > 0)
         {
-            isRight = true;
             arrayLoop();
             square[3].GetComponent<BoxCollider2D>().enabled = true;
         }
-        else
-        {
-            isRight = false;
-        }
+      
         //left box
         if (playerHori < 0)
         {
-            isLeft = true;
             arrayLoop();
             square[2].GetComponent<BoxCollider2D>().enabled = true;
         }
-        else 
-        {
-            isLeft = false;
-        }
+       
 
 
 

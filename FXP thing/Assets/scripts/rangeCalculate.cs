@@ -15,5 +15,17 @@ public class rangeCalculate : MonoBehaviour
         return range;
     }
 
+    public void drawRange(Vector3[] range, GameObject tile)
+    {
+        
+        for (int x = 0; x < range.Length; x++)
+        {
+            Vector3 position = new Vector3(range[x].x, (range[x].y - 0.5f), 0f);
+            Instantiate(tile, position, Quaternion.identity);
+
+        }
+    }
+
+    
 
 }

@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 23514340}
   - component: {fileID: 23514339}
   - component: {fileID: 23514341}
-  - component: {fileID: 23514344}
   - component: {fileID: 23514346}
   - component: {fileID: 23514345}
   - component: {fileID: 23514347}
@@ -226,48 +225,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upRange: []
   magBlockPos: {x: 2, y: -1, z: 0}
-  rangeEnd: 1
+  rangeEnd: 2
   xInc: 0
   yInc: 0
   scriptController: {fileID: 1750283395}
---- !u!1839735485 &23514344
-Tilemap:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23514338}
-  m_Enabled: 1
-  m_Tiles: {}
-  m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
-  m_TileObjectToInstantiateArray: []
-  m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
-  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
-  m_TileOrientation: 0
-  m_TileOrientationMatrix:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
+  rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!50 &23514345
 Rigidbody2D:
   serializedVersion: 4
@@ -418,10 +380,6 @@ MonoBehaviour:
   - {fileID: 548540142}
   - {fileID: 505930218}
   - {fileID: 1934657452}
-  isUp: 0
-  isDown: 0
-  isLeft: 0
-  isRight: 0
 --- !u!212 &417879328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2648,10 +2606,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftRange: []
   magBlockPos: {x: 3, y: -1.5, z: 0}
-  rangeEnd: 1
+  rangeEnd: 2
   xInc: 0
   yInc: 0
   scriptController: {fileID: 1750283395}
+  rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!1 &1138255036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,7 +2689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138255036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -0.52, z: 0}
+  m_LocalPosition: {x: -2.5, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2750,11 +2709,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downRange: []
-  magBlockPos: {x: 1, y: -0.5, z: 0}
-  rangeEnd: 1
+  magBlockPos: {x: -2.5, y: -0.25, z: 0}
+  rangeEnd: 2
   xInc: 0
   yInc: 0
   scriptController: {fileID: 1750283395}
+  rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!1 &1228883513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,10 +2925,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightRange: []
   magBlockPos: {x: 0, y: 0, z: 0}
-  rangeEnd: 1
+  rangeEnd: 2
   xInc: 0
   yInc: 0
   scriptController: {fileID: 1750283395}
+  rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!1 &1750283395
 GameObject:
   m_ObjectHideFlags: 0

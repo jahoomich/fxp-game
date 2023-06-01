@@ -13,19 +13,23 @@ public class magnetDownRange : MonoBehaviour
     public GameObject scriptController;
     private rangeCalculate rangeCalculate;
 
+    public GameObject rangeTile;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rangeCalculate = scriptController.GetComponent<rangeCalculate>();
 
-        rangeEnd = 1; 
+        int endOfRange = rangeEnd; 
         transform.position = magBlockPos;
         xInc = 0.5f;
         yInc = -0.25f;
         rangeStart = new Vector3((transform.position.x + (xInc)), transform.position.y + (yInc), 0f);
     
-        downRange = (rangeCalculate.rangeCalculateFunc(rangeEnd, rangeStart, xInc, yInc));
+        downRange = (rangeCalculate.rangeCalculateFunc(endOfRange, rangeStart, xInc, yInc));
+    
+        rangeCalculate.drawRange(downRange, rangeTile);
     }
 
 
