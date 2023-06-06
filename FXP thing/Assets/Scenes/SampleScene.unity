@@ -184,7 +184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: bdf506ad34b05d1478b961aa4515d221, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -228,7 +228,9 @@ MonoBehaviour:
   rangeEnd: 2
   xInc: 0
   yInc: 0
+  inRange: 0
   scriptController: {fileID: 1750283395}
+  metalBlock: {fileID: 2113565892}
   rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!50 &23514345
 Rigidbody2D:
@@ -965,7 +967,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2944,7 +2946,9 @@ MonoBehaviour:
   rangeEnd: 2
   xInc: 0
   yInc: 0
+  inRange: 0
   scriptController: {fileID: 1750283395}
+  metalBlock: {fileID: 2113565892}
   rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!1 &1138255036
 GameObject:
@@ -3043,13 +3047,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33952bc959164b2438ad5d891b4427a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rangeLength: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  xyIncrements:
+  - 0
+  - 0
   downRange: []
-  magBlockPos: {x: -2.5, y: -0.25, z: 0}
-  rangeEnd: 2
-  xInc: 0
-  yInc: 0
-  scriptController: {fileID: 1750283395}
-  rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
+  rangeTileSprite: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
+  metalBlock: {fileID: 2113565892}
 --- !u!1 &1158073749 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8666040013737600107, guid: 7f4167bc7593b39429501710f533f137, type: 3}
@@ -3297,7 +3302,9 @@ MonoBehaviour:
   rangeEnd: 2
   xInc: 0
   yInc: 0
+  inRange: 0
   scriptController: {fileID: 1750283395}
+  metalBlock: {fileID: 2113565892}
   rangeTile: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
 --- !u!1 &1358412255
 GameObject:
@@ -3531,6 +3538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927206b464f5bac42915b7b95d000f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xyIncrements:
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &1834866225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3765,11 +3777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.99
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.53
+      value: -1.57
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3806,6 +3818,10 @@ PrefabInstance:
     - target: {fileID: 9039404415639229794, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039404415639229794, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229795, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: moveSpeed

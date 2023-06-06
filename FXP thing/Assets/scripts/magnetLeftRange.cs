@@ -11,8 +11,12 @@ public class magnetLeftRange : MonoBehaviour
     [SerializeField]public int rangeEnd;
     [HideInInspector]public float xInc, yInc; 
 
+    public bool inRange;
+
     public GameObject scriptController;
     private rangeCalculate rangeCalculate;
+
+    public GameObject metalBlock;
 
     public GameObject rangeTile;
 
@@ -23,11 +27,9 @@ public class magnetLeftRange : MonoBehaviour
 
         int endOfRange = rangeEnd; 
         transform.position = magBlockPos;
-        xInc = 0.5f;
-        yInc = 0.25f;
         rangeStart = new Vector3((transform.position.x + (xInc)), transform.position.y + (yInc), 0f);
     
-        leftRange = (rangeCalculate.rangeCalculateFunc(endOfRange, rangeStart, xInc, yInc));          
+        leftRange = (rangeCalculate.rangeCalculateFunc(endOfRange, rangeStart, rangeCalculate.xyIncrements[2], rangeCalculate.xyIncrements[1]));          
     
         rangeCalculate.drawRange(leftRange, rangeTile);
     }
@@ -35,6 +37,16 @@ public class magnetLeftRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int x = 0; x < leftRange.Length; x++)
+        {
+            if(metalBlock.GetComponent<Transform>().position == leftRange[x])
+            {
+                inRange = true;
+            }
+            else
+            {
+                inRange = false;
+            }
+        }
     }
 }
