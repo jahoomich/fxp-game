@@ -34,14 +34,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator keepValue(bool direction, float value)
-    {
-        while(value == 0f)
-        {
-            direction = true;
-        }
-        yield return null;
-    }
+    
 
     void Start() 
     {
@@ -65,79 +58,74 @@ public class playerMovement : MonoBehaviour
         float playerVert = Input.GetAxis("Vertical") * 0.5f * Time.deltaTime;
         float playerHori = Input.GetAxis("Horizontal") * 0.5f * Time.deltaTime;
 
-        if (playerVert != 0.0f)
+        if (playerVert != 0)
         {
             playerHori = 0;
         }
-        if (playerHori != 0.0f)
+        else
         {
             playerVert = 0;
         }
 
         transform.Translate(playerHori,playerVert,0);
 
-        
-       
-        if (playerVert > 0.00f)
-        {   
+        shootBeamDraw.shootBeamDrawFunc(playerState.isShooting, playerDirectionsArray, square);
+
+        if (Input.GetKeyDown(KeyCode.W))  
+        {
             directionArrayLoop();
+            playerDirectionsArray[0] = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            directionArrayLoop();
+            playerDirectionsArray[1] = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            directionArrayLoop();
+            playerDirectionsArray[2] = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            directionArrayLoop();
+            playerDirectionsArray[3] = true;
+        }
+       
+        if (playerVert > 0)
+        {   
             colliderArrayLoop();
             square[0].GetComponent<BoxCollider2D>().enabled = true;
-            StartCoroutine(keepValue(playerDirectionsArray[0], 0f));
-            //playerDirectionsArray[0] = true;
-            shootBeamDraw.shootBeamDrawFunc(playerState.isShooting, playerDirectionsArray[0], square[0]);
 
-        }
-        else
-        {
-            playerDirectionsArray[0] = false;
-        }
-       
-        //down box
-        if (playerVert < 0.00f)
-        {
-            directionArrayLoop();
-            colliderArrayLoop();
-            square[1].GetComponent<BoxCollider2D>().enabled = true;
-            playerDirectionsArray[1] = true;
-            shootBeamDraw.shootBeamDrawFunc(playerState.isShooting, playerDirectionsArray[1], square[1]);
-
-        }
-        else
-        {
-            playerDirectionsArray[1] = false;
-        }
-     
-        //right box
-        if (playerHori > 0.00f)
-        {
-            directionArrayLoop();
-            colliderArrayLoop();
-            square[2].GetComponent<BoxCollider2D>().enabled = true;
-            playerDirectionsArray[2] = true;
-            shootBeamDraw.shootBeamDrawFunc(playerState.isShooting, playerDirectionsArray[2], square[2]);
-
-        }
-        else
-        {
-            playerDirectionsArray[2] = false;
         }
       
-        //left box
-        if (playerHori < 0.00f)
+       
+        //down box
+        if (playerVert < 0)
         {
-            directionArrayLoop();
+            colliderArrayLoop();
+            square[1].GetComponent<BoxCollider2D>().enabled = true;
+
+        }
+       
+     
+        //right box
+        if (playerHori > 0)
+        {
+            colliderArrayLoop();
+            square[2].GetComponent<BoxCollider2D>().enabled = true;
+        }
+      
+      
+        //left box
+        if (playerHori < 0)
+        {
             colliderArrayLoop();
             square[3].GetComponent<BoxCollider2D>().enabled = true;
-            playerDirectionsArray[3] = true;
-            shootBeamDraw.shootBeamDrawFunc(playerState.isShooting, playerDirectionsArray[3], square[3]);
 
 
         }
-        else
-        {
-            playerDirectionsArray[3] = false;
-        }
+       
 
         
         
