@@ -1396,29 +1396,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606099964}
   m_CullTransparentMesh: 1
---- !u!1 &678866829 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2472385660799173574, guid: c9afd78bce350bd459c145796499dc52, type: 3}
-  m_PrefabInstance: {fileID: 9006351673939717407}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &678866830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678866829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d85562981d257e4cbd6bf47e87c56de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeLength: 0
-  startPosition: {x: -5, y: -0.5, z: 0}
-  electricRay: {fileID: 8482771046888388206, guid: f351cf35e00c37e459c804c9b6ea902b, type: 3}
-  coilRange: []
-  metalBlock: {fileID: 2113565892}
-  antiMetalBlock: {fileID: 1624498171}
 --- !u!1 &902905833
 GameObject:
   m_ObjectHideFlags: 0

@@ -3678,29 +3678,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f4167bc7593b39429501710f533f137, type: 3}
---- !u!1 &1925539627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2472385660799173574, guid: c9afd78bce350bd459c145796499dc52, type: 3}
-  m_PrefabInstance: {fileID: 9006351673939717407}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1925539630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925539627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d85562981d257e4cbd6bf47e87c56de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rangeLength: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  electricRay: {fileID: 8482771046888388206, guid: f351cf35e00c37e459c804c9b6ea902b, type: 3}
-  coilRange: []
-  metalBlock: {fileID: 2113565892}
-  antiMetalBlock: {fileID: 1624498171}
 --- !u!1 &1948235839 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8666040013737600107, guid: 7f4167bc7593b39429501710f533f137, type: 3}
@@ -4240,11 +4217,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229793, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4292,7 +4269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229795, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: blockPosition.x
-      value: -4.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9039404415639229795, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
       propertyPath: blockPosition.y

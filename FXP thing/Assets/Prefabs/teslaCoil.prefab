@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 999845362745228512}
   - component: {fileID: 269644495240700415}
+  - component: {fileID: 3955463503114309119}
   m_Layer: 0
   m_Name: teslaCoil
   m_TagString: Untagged
@@ -84,3 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3955463503114309119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472385660799173574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d85562981d257e4cbd6bf47e87c56de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeLength: 0
+  startPosition: {x: 0, y: 0, z: 0}
+  electricRay: {fileID: 8482771046888388206, guid: f351cf35e00c37e459c804c9b6ea902b, type: 3}
+  coilRange: []
+  metalBlock: {fileID: 9039404415639229796, guid: 97f957ad5534b7b4496c925a0d57c6f5, type: 3}
+  antiMetalBlock: {fileID: 8834493878168705225, guid: f31484239b078e84f845441ccb2837c9, type: 3}
