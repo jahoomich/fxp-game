@@ -8,9 +8,9 @@ public class hertzController : MonoBehaviour
 
     public TextMeshProUGUI hertz;
 
-    private int hertzNum = 0;
-    private int max = 5;
-    private int min = 0;
+    public int hertzNum = 0;
+    public int max = 5;
+    public int min = 0;
     // Start is called before the first frame update
     void Start()
     {

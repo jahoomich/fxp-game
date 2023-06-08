@@ -4,49 +4,210 @@ using UnityEngine;
 
 public class magnetLeftRange : MonoBehaviour
 {
+    [SerializeField] public int rangeLength;
+
+    public Vector3 startPosition;
+
+    public float[] xyIncrements = new float[2];
 
     public Vector3[] leftRange;
-    [SerializeField] public Vector3 magBlockPos;
-    [HideInInspector]private Vector3 rangeStart;
-    [SerializeField]public int rangeEnd;
-    [HideInInspector]public float xInc, yInc; 
 
-    public bool inRange;
-
-    public GameObject scriptController;
-    private rangeCalculate rangeCalculate;
+    public GameObject rangeTileSprite;
 
     public GameObject metalBlock;
 
-    public GameObject rangeTile;
+    private metalBlockMovement metalBlockMovement;
+    
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public Vector3 magnetBlockPosition;
+
+    public GameObject highlightObject;
+
+    public GameObject magnetBlock;
+
+    public GameObject player;
+    private playerState playerState;
+
+    public int hertzNumber;
+
+    public GameObject hertz;
+    private hertzController hertzController;
+    public bool isTouching;
+
+    public Vector3 endPosition;
+
+    public int metalBlockPosition;
+
+    public Vector3 currentPos;
+
+    public GameObject antiMetalBlock;
+
+    
+    
+
+    
+
+    void Start() 
     {
-        rangeCalculate = scriptController.GetComponent<rangeCalculate>();
+        metalBlockMovement = metalBlock.GetComponent<metalBlockMovement>();
 
-        int endOfRange = rangeEnd; 
-        transform.position = magBlockPos;
-        rangeStart = new Vector3((transform.position.x + (xInc)), transform.position.y + (yInc), 0f);
-    
-        leftRange = (rangeCalculate.rangeCalculateFunc(endOfRange, rangeStart, rangeCalculate.xyIncrements[2], rangeCalculate.xyIncrements[1]));          
-    
-        rangeCalculate.drawRange(leftRange, rangeTile);
+        playerState = player.GetComponent<playerState>();
+        hertzController = hertz.GetComponent<hertzController>();
+
+        highlightObject.transform.position = magnetBlockPosition;
+        highlightObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        magnetBlock.transform.position = magnetBlockPosition;
+        rangeLength = 4;
+        xyIncrements[0] = -0.5f;
+        xyIncrements[1] = -0.25f;
+        startPosition = new Vector3((this.GetComponent<Transform>().position.x + xyIncrements[0]), (this.GetComponent<Transform>().position.y + xyIncrements[1]), 0f);
+        leftRange = CalculateLeftRange();
+        //for (int x = 0; x < downRange.Length; x++)
+        //{
+            //Debug.Log(downRange[x]);
+        //}
+       
+
+        drawRange();
+     
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() 
+    {
+
+        hertzNumber = hertzController.hertzNum;
+        
+        if (hertzNumber >= leftRange.Length)
+        {
+            hertzNumber = (leftRange.Length - 1);
+        }
+
+        if(playerState.isShooting == true && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != leftRange[leftRange.Length - 1])
+        {
+
+            StartCoroutine(moveLeft());
+            
+        }
+
+        else if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != leftRange[0])
+        {
+            StartCoroutine(moveRight());
+            //metalBlock.transform.position = endNegativePosition();
+  
+        }
+
+        if (metalBlock.transform.position == antiMetalBlock.transform.position)
+        {
+            metalBlock.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        
+    
+    } 
+
+
+
+    IEnumerator moveLeft()
+    {
+        
+        endPosition = new Vector3(leftRange[0].x + (-0.5f * hertzNumber), leftRange[0].y + (-0.25f * hertzNumber), 0f);
+        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != leftRange[leftRange.Length - 1])
+        {
+            metalBlockMovement.moveLeft();
+            antiMetalBlock.transform.Translate(0.5f, -0.25f, 0f);
+            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == leftRange[leftRange.Length - 1])
+            {
+                break;
+            }
+            
+            yield return null;
+        }
+        
+        
+    }
+
+    IEnumerator moveRight()
+    {
+        
+        endPosition = new Vector3(leftRange[leftRange.Length - 1].x + (0.5f * hertzNumber), leftRange[leftRange.Length - 1].y + (0.25f * hertzNumber));
+        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != leftRange[0])
+        {
+            
+            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == leftRange[0])
+            {
+                
+                break;
+            }
+            metalBlockMovement.moveRight();
+            yield return null;
+            
+        }
+    }
+
+
+    
+
+    
+    
+
+
+    public Vector3[] CalculateLeftRange()
+    {
+        Vector3[] range = new Vector3[rangeLength];
+        for (int x = 0; x < rangeLength; x++)
+        {
+            range[x] = new Vector3((startPosition.x + (xyIncrements[0] * x)),(startPosition.y + (xyIncrements[1] * x)),0f);
+        }
+        return range;
+    }
+
+    public void drawRange()
+    {
+        for (int x = 0; x < leftRange.Length; x++)
+        {
+            Vector3 position = new Vector3(leftRange[x].x, (leftRange[x].y - 0.5f), 0f);
+            Instantiate(rangeTileSprite, position, Quaternion.identity);
+        }
+    }
+
+    public bool checkRange()
     {
         for (int x = 0; x < leftRange.Length; x++)
         {
             if(metalBlock.GetComponent<Transform>().position == leftRange[x])
             {
-                inRange = true;
-            }
-            else
-            {
-                inRange = false;
+                return true;
             }
         }
+        return false;
     }
+
+  
+
+    
+
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.tag == "playerTrigger")
+        {
+            isTouching = true;
+            highlightObject.GetComponent<SpriteRenderer>().enabled = true;
+            
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) 
+    {
+        if (other.tag == "playerTrigger")
+        {
+            isTouching = false;
+            highlightObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        }
+    }
+
+    
+    
+    
 }

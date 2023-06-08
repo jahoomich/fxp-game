@@ -8,9 +8,11 @@ public class metalBlockMovement : MonoBehaviour
     [SerializeField] public Vector3 blockPosition;
     public float moveSpeed;
 
+   
+
     public void moveLeft()
     {
-        metalBlock.transform.Translate((-0.5f * moveSpeed), (-0.25f * moveSpeed), 0f);
+        metalBlock.transform.Translate((-0.5f), (-0.25f), 0f);
     }
 
     public void moveDown()
@@ -20,18 +22,18 @@ public class metalBlockMovement : MonoBehaviour
 
     public void moveRight()
     {
-        metalBlock.transform.Translate((0.5f * moveSpeed), (0.25f * moveSpeed), 0f);
+        metalBlock.transform.Translate((0.5f), (0.25f), 0f);
     }
 
     public void moveUp()
     {
-        metalBlock.transform.Translate((-0.5f * moveSpeed), (0.25f * moveSpeed), 0f);
+        metalBlock.transform.Translate((-0.5f), (0.25f), 0f);
     }
     
     public void Start()
     {
-        moveSpeed = 0.01f;
-        metalBlock.transform.position = blockPosition;
+        metalBlock.GetComponent<Transform>().position = blockPosition;
+        moveSpeed = 0.1f;
     }
 
     void Update() 

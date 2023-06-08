@@ -55,8 +55,8 @@ public class playerMovement : MonoBehaviour
     {
 
         
-        float playerVert = Input.GetAxis("Vertical") * 0.5f * Time.deltaTime;
-        float playerHori = Input.GetAxis("Horizontal") * 0.5f * Time.deltaTime;
+        float playerVert = Input.GetAxis("Vertical") * 0.75f * Time.deltaTime;
+        float playerHori = Input.GetAxis("Horizontal") * 0.75f * Time.deltaTime;
 
         if (playerVert != 0)
         {
@@ -113,7 +113,7 @@ public class playerMovement : MonoBehaviour
         if (playerHori > 0)
         {
             colliderArrayLoop();
-            square[2].GetComponent<BoxCollider2D>().enabled = true;
+            square[3].GetComponent<BoxCollider2D>().enabled = true;
         }
       
       
@@ -121,7 +121,7 @@ public class playerMovement : MonoBehaviour
         if (playerHori < 0)
         {
             colliderArrayLoop();
-            square[3].GetComponent<BoxCollider2D>().enabled = true;
+            square[2].GetComponent<BoxCollider2D>().enabled = true;
 
 
         }
