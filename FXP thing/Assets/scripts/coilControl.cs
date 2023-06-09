@@ -5,7 +5,9 @@ using UnityEngine;
 public class coilControl : MonoBehaviour
 {
 
-    [SerializeField] public int rangeLength;
+    public int rangeLength;
+
+    [SerializeField] public int rangeInput;
     [SerializeField] public Vector3 startPosition;
 
     public GameObject electricRay;
@@ -20,7 +22,7 @@ public class coilControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rangeLength = 4;
+        rangeLength = rangeInput;
         startPosition = new Vector3(this.GetComponent<Transform>().position.x + 0.5f, this.GetComponent<Transform>().position.y + 0.25f, 0f);
         Debug.Log(startPosition);
         coilRange = calculateCoilRange();
@@ -30,8 +32,7 @@ public class coilControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(checkRange());
+        
 
         removeRay();
     }
@@ -51,7 +52,7 @@ public class coilControl : MonoBehaviour
     {
         for (int x = 0; x < coilRange.Length; x++)
         {
-            if (metalBlock.transform.position == coilRange[x])
+            if (metalBlock.transform.position == coilRange[x] || antiMetalBlock.transform.position == coilRange[x])
             {
                 return true;
             }

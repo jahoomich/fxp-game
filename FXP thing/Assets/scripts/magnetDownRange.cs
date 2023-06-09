@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class magnetDownRange : MonoBehaviour
 {
-    [SerializeField] public int rangeLength;
+    public int rangeLength;
+
+    [SerializeField] public int rangeLengthInput;
 
     public Vector3 startPosition;
 
@@ -29,11 +31,11 @@ public class magnetDownRange : MonoBehaviour
     public GameObject player;
     private playerState playerState;
 
-    public GameObject antiMetalBlock;
+    
 
     private metalBlockMovement metalBlockMovement;
 
-    public bool isTouching;
+    public bool isTouching, valid1, valid2;
 
 
 
@@ -49,7 +51,7 @@ public class magnetDownRange : MonoBehaviour
         highlightObject.GetComponent<SpriteRenderer>().enabled = false;
 
         magnetBlock.transform.position = magnetBlockPosition;
-        rangeLength = 4;
+        rangeLength = rangeLengthInput;
         xyIncrements[0] = 0.5f;
         xyIncrements[1] = -0.25f;
         startPosition = new Vector3((this.GetComponent<Transform>().position.x + xyIncrements[0]), (this.GetComponent<Transform>().position.y + xyIncrements[1]), 0f);
@@ -66,65 +68,36 @@ public class magnetDownRange : MonoBehaviour
     {
         hertzNumber = hertzController.hertzNum;
         
-        if (hertzNumber >= downRange.Length)
-        {
-            hertzNumber = (downRange.Length - 1);
-        }
+       
 
         if(playerState.isShooting == true && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != downRange[downRange.Length - 1])
         {
-
-            StartCoroutine(moveDown());
+            valid1 = true;
+            valid2 = false;
+            //moves metal block downwards
+            metalBlock.transform.position = new Vector3(startPosition.x + 0.5f * hertzNumber, startPosition.y - 0.25f * hertzNumber, 0f);
             
         }
-
-        else if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != downRange[0])
+        else
         {
-            StartCoroutine(moveUp());
-            //metalBlock.transform.position = endNegativePosition();
+            valid1 = false;
+        }
+
+        if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != downRange[0])
+        {
+            valid1 = false;
+            valid2 = true;
+            //moves metal block upwards
+            metalBlock.transform.position = new Vector3((startPosition.x + 0.5f * hertzNumber) - 0.5f, (startPosition.y - 0.25f * hertzNumber) + 0.25f, 0f);
   
         }
-
-        if (metalBlock.transform.position == antiMetalBlock.transform.position)
+        else
         {
-            metalBlock.GetComponent<SpriteRenderer>().enabled = false;
+            valid2 = false;
         }
-    }
 
-    IEnumerator moveDown()
-    {
-        
-        endPosition = new Vector3(downRange[0].x + (0.5f * hertzNumber), downRange[0].y + (-0.25f * hertzNumber), 0f);
-        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != downRange[downRange.Length - 1])
-        {
-            metalBlockMovement.moveDown();
-            antiMetalBlock.transform.Translate(0.5f, -0.25f, 0f);
-            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == downRange[downRange.Length - 1])
-            {
-                break;
-            }
-            
-            yield return null;
-        }
+      
     }
-
-    IEnumerator moveUp()
-    {
-        
-        endPosition = new Vector3(downRange[downRange.Length - 1].x + (-0.5f * hertzNumber), downRange[downRange.Length - 1].y + (0.25f * hertzNumber), 0f);
-        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != downRange[0])
-        {
-            metalBlockMovement.moveUp();
-            antiMetalBlock.transform.Translate(0.5f, -0.25f, 0f);
-            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == downRange[0])
-            {
-                break;
-            }
-            
-            yield return null;
-        }
-    }
-
 
 
     public Vector3[] CalculateDownRange()

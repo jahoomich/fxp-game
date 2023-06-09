@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class magnetLeftRange : MonoBehaviour
 {
-    [SerializeField] public int rangeLength;
+    public int rangeLength;
+    [SerializeField] public int rangeInput;
+
 
     public Vector3 startPosition;
 
@@ -36,11 +38,12 @@ public class magnetLeftRange : MonoBehaviour
 
     public Vector3 endPosition;
 
-    public int metalBlockPosition;
+    
 
     public Vector3 currentPos;
+    public bool isValid1, isValid2;
 
-    public GameObject antiMetalBlock;
+    
 
     
     
@@ -49,7 +52,6 @@ public class magnetLeftRange : MonoBehaviour
 
     void Start() 
     {
-        metalBlockMovement = metalBlock.GetComponent<metalBlockMovement>();
 
         playerState = player.GetComponent<playerState>();
         hertzController = hertz.GetComponent<hertzController>();
@@ -58,7 +60,7 @@ public class magnetLeftRange : MonoBehaviour
         highlightObject.GetComponent<SpriteRenderer>().enabled = false;
 
         magnetBlock.transform.position = magnetBlockPosition;
-        rangeLength = 4;
+        rangeLength = rangeInput;
         xyIncrements[0] = -0.5f;
         xyIncrements[1] = -0.25f;
         startPosition = new Vector3((this.GetComponent<Transform>().position.x + xyIncrements[0]), (this.GetComponent<Transform>().position.y + xyIncrements[1]), 0f);
@@ -78,29 +80,36 @@ public class magnetLeftRange : MonoBehaviour
 
         hertzNumber = hertzController.hertzNum;
         
-        if (hertzNumber >= leftRange.Length)
-        {
-            hertzNumber = (leftRange.Length - 1);
-        }
+       
 
         if(playerState.isShooting == true && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != leftRange[leftRange.Length - 1])
         {
-
-            StartCoroutine(moveLeft());
+            isValid1 = true;
+            isValid2 = false;
+            metalBlock.transform.position = new Vector3(startPosition.x - 0.5f * hertzNumber, startPosition.y - 0.25f * hertzNumber, 0f);
+            //move metal block to the left
             
         }
-
-        else if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != leftRange[0])
+        else
         {
-            StartCoroutine(moveRight());
-            //metalBlock.transform.position = endNegativePosition();
+            isValid1 = false;
+        }
+
+        if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != leftRange[0])
+        {
+            isValid1 = false;
+            isValid2 = true;
+            
+            //move metal block to the right
+            metalBlock.transform.position = new Vector3((startPosition.x - 0.5f * hertzNumber)+ 0.5f, (startPosition.y - 0.25f * hertzNumber) + 0.25f, 0f);
   
         }
-
-        if (metalBlock.transform.position == antiMetalBlock.transform.position)
+        else
         {
-            metalBlock.GetComponent<SpriteRenderer>().enabled = false;
+            isValid2 = false;
         }
+
+        
 
         
     
@@ -108,42 +117,7 @@ public class magnetLeftRange : MonoBehaviour
 
 
 
-    IEnumerator moveLeft()
-    {
-        
-        endPosition = new Vector3(leftRange[0].x + (-0.5f * hertzNumber), leftRange[0].y + (-0.25f * hertzNumber), 0f);
-        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != leftRange[leftRange.Length - 1])
-        {
-            metalBlockMovement.moveLeft();
-            antiMetalBlock.transform.Translate(0.5f, -0.25f, 0f);
-            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == leftRange[leftRange.Length - 1])
-            {
-                break;
-            }
-            
-            yield return null;
-        }
-        
-        
-    }
-
-    IEnumerator moveRight()
-    {
-        
-        endPosition = new Vector3(leftRange[leftRange.Length - 1].x + (0.5f * hertzNumber), leftRange[leftRange.Length - 1].y + (0.25f * hertzNumber));
-        while(metalBlock.transform.position != endPosition && metalBlock.transform.position != leftRange[0])
-        {
-            
-            if (metalBlock.transform.position == endPosition || metalBlock.transform.position == leftRange[0])
-            {
-                
-                break;
-            }
-            metalBlockMovement.moveRight();
-            yield return null;
-            
-        }
-    }
+    
 
 
     

@@ -5,6 +5,8 @@ using UnityEngine;
 public class metalBlockMovement : MonoBehaviour
 {
     public GameObject metalBlock;
+
+    
     [SerializeField] public Vector3 blockPosition;
     public float moveSpeed;
 
@@ -15,6 +17,7 @@ public class metalBlockMovement : MonoBehaviour
         metalBlock.transform.Translate((-0.5f), (-0.25f), 0f);
     }
 
+    
     public void moveDown()
     {
         metalBlock.transform.Translate((0.5f * moveSpeed), (-0.25f * moveSpeed), 0f);

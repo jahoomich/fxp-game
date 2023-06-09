@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeLength: 2
+  rangeLengthInput: 4
   startPosition: {x: 0, y: 0, z: 0}
   xyIncrements:
   - 0
@@ -110,6 +111,14 @@ MonoBehaviour:
   metalBlock: {fileID: 0}
   magnetBlockPosition: {x: -2.5, y: -0.25, z: 0}
   highlightObject: {fileID: 5032841805296136179}
+  magnetBlock: {fileID: 8999062775975034361}
+  endPosition: {x: 0, y: 0, z: 0}
+  hertz: {fileID: 0}
+  hertzNumber: 0
+  player: {fileID: 0}
+  isTouching: 0
+  valid1: 0
+  valid2: 0
 --- !u!61 &8999062775975034244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,6 +173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8999062775975034363}
     m_Modifications:
+    - target: {fileID: 3712627710210114028, guid: 188baa56095b713409a6d5bc8d7341fc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3712627710210114028, guid: 188baa56095b713409a6d5bc8d7341fc, type: 3}
       propertyPath: m_SortingOrder
       value: 3
