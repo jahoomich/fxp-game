@@ -1157,6 +1157,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8351966252546620319, guid: f31484239b078e84f845441ccb2837c9, type: 3}
+      propertyPath: magnet
+      value: 
+      objectReference: {fileID: 150233138}
     - target: {fileID: 8834493878168705225, guid: f31484239b078e84f845441ccb2837c9, type: 3}
       propertyPath: m_Name
       value: anti-metalBlock
@@ -1760,6 +1764,38 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2439900278257682805, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: magnetBlockPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1279335679}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: metalBlock
+      value: 
+      objectReference: {fileID: 2056784231}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: magnetBlock
+      value: 
+      objectReference: {fileID: 150233138}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: highlightObject
+      value: 
+      objectReference: {fileID: 4123935096076168403, guid: 188baa56095b713409a6d5bc8d7341fc, type: 3}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: rangeTileSprite
+      value: 
+      objectReference: {fileID: 2228580534468002318, guid: af359e54e4dafc7448d01e084acca510, type: 3}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: rangeLengthInput
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
+      propertyPath: magnetBlockPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674807520588677698, guid: 303c0ee86c742584d90e3b3b68e27771, type: 3}
       propertyPath: magnetBlockPosition.y
       value: 0.5
       objectReference: {fileID: 0}

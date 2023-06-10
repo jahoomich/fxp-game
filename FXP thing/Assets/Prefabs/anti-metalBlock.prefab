@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8834493878168705231}
   - component: {fileID: 8834493878168705230}
-  - component: {fileID: 8834493878168705228}
+  - component: {fileID: -8351966252546620319}
   m_Layer: 0
   m_Name: anti-metalBlock
-  m_TagString: Untagged
+  m_TagString: anti
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8834493878168705228
+--- !u!114 &-8351966252546620319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8834493878168705225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e378eca39bb747e418542827fea20a67, type: 3}
+  m_Script: {fileID: 11500000, guid: a3179ef4975d0d94b96aa9accda46910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

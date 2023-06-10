@@ -14,8 +14,9 @@ public class coilControl : MonoBehaviour
 
     public Vector3[] coilRange;
 
-    public GameObject metalBlock, antiMetalBlock;
+    public GameObject metalBlock;
 
+    
     
 
     
@@ -52,10 +53,11 @@ public class coilControl : MonoBehaviour
     {
         for (int x = 0; x < coilRange.Length; x++)
         {
-            if (metalBlock.transform.position == coilRange[x] || antiMetalBlock.transform.position == coilRange[x])
+            if (metalBlock.transform.position == coilRange[x] || GameObject.FindGameObjectWithTag("anti").transform.position == coilRange[x])
             {
                 return true;
             }
+            
                 
         }
         return false;

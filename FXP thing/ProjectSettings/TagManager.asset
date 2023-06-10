@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerTrigger
   - electricRay
+  - anti
   layers:
   - Default
   - TransparentFX

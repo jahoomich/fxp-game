@@ -30,10 +30,7 @@ public class magnetLeftRange : MonoBehaviour
     public GameObject player;
     private playerState playerState;
 
-    public int hertzNumber;
-
-    public GameObject hertz;
-    private hertzController hertzController;
+    
     public bool isTouching;
 
     public Vector3 endPosition;
@@ -54,7 +51,7 @@ public class magnetLeftRange : MonoBehaviour
     {
 
         playerState = player.GetComponent<playerState>();
-        hertzController = hertz.GetComponent<hertzController>();
+        
 
         highlightObject.transform.position = magnetBlockPosition;
         highlightObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -78,15 +75,15 @@ public class magnetLeftRange : MonoBehaviour
     void Update() 
     {
 
-        hertzNumber = hertzController.hertzNum;
+        
         
        
 
-        if(playerState.isShooting == true && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != leftRange[leftRange.Length - 1])
+        if(Input.GetMouseButtonDown(0) && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != leftRange[leftRange.Length - 1])
         {
             isValid1 = true;
             isValid2 = false;
-            metalBlock.transform.position = new Vector3(startPosition.x - 0.5f * hertzNumber, startPosition.y - 0.25f * hertzNumber, 0f);
+            moveLeft();
             //move metal block to the left
             
         }
@@ -95,13 +92,12 @@ public class magnetLeftRange : MonoBehaviour
             isValid1 = false;
         }
 
-        if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != leftRange[0])
+        if(Input.GetMouseButtonDown(0) && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != leftRange[0])
         {
             isValid1 = false;
             isValid2 = true;
-            
+            moveRight();
             //move metal block to the right
-            metalBlock.transform.position = new Vector3((startPosition.x - 0.5f * hertzNumber)+ 0.5f, (startPosition.y - 0.25f * hertzNumber) + 0.25f, 0f);
   
         }
         else
@@ -117,7 +113,14 @@ public class magnetLeftRange : MonoBehaviour
 
 
 
-    
+    public void moveRight()
+    {
+        metalBlock.transform.Translate(0.5f, 0.25f, 0f);
+    }
+    public void moveLeft()
+    {
+        metalBlock.transform.Translate(-0.5f, -0.25f, 0f);
+    }
 
 
     

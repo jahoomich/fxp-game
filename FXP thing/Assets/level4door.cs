@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class level3doorscript : MonoBehaviour
+public class level4door : MonoBehaviour
 {
+
     public GameObject metalBlock;
+    
+    
 
     public bool pass;
 
-    public Vector3 desiredPosition;
-
-    [SerializeField] public Vector3 positionInput;
-
+   
     // Start is called before the first frame update
     void Start()
     {
         pass = false;
-        desiredPosition = positionInput;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (metalBlock.transform.position == desiredPosition && metalBlock.GetComponent<SpriteRenderer>().enabled == true && pass == true)
+        if (metalBlock.transform.position.x == 0.5f && metalBlock.transform.position.y == -1.75f)
         {
-            SceneManager.LoadScene("level4");
+            if (pass == true)
+            {
+                SceneManager.LoadScene("level5");
+   
+            }
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    private void OnCollisionEnter2D(Collision2D other) 
     {
         if (other.gameObject.tag == "Player")
         {
@@ -37,11 +41,11 @@ public class level3doorscript : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) 
+    private void OnCollisionExit2D(Collision2D other) 
     {
         if (other.gameObject.tag == "Player")
         {
             pass = false;
-        }    
+        }
     }
 }

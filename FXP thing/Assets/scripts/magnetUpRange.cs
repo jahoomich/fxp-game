@@ -28,7 +28,7 @@ public class magnetUpRange : MonoBehaviour
 
     
 
-    public int hertzNumber;
+    
 
     public GameObject player;
     private playerState playerState;

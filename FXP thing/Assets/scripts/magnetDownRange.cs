@@ -23,10 +23,9 @@ public class magnetDownRange : MonoBehaviour
     public GameObject highlightObject;
     public GameObject magnetBlock;
     public Vector3 endPosition;
-    public GameObject hertz;
-    private hertzController hertzController;
+    
 
-    public int hertzNumber;
+    
 
     public GameObject player;
     private playerState playerState;
@@ -45,7 +44,7 @@ public class magnetDownRange : MonoBehaviour
         metalBlockMovement = metalBlock.GetComponent<metalBlockMovement>();
         playerState = player.GetComponent<playerState>();
 
-        hertzController = hertz.GetComponent<hertzController>();
+        
 
         highlightObject.transform.position = magnetBlockPosition;
         highlightObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -66,16 +65,16 @@ public class magnetDownRange : MonoBehaviour
 
     void Update() 
     {
-        hertzNumber = hertzController.hertzNum;
+        
         
        
 
-        if(playerState.isShooting == true && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != downRange[downRange.Length - 1])
+        if(Input.GetMouseButtonDown(0) && checkRange() == true && playerState.isPositive == true && isTouching == true && metalBlock.transform.position != downRange[downRange.Length - 1])
         {
             valid1 = true;
             valid2 = false;
+            moveDown();
             //moves metal block downwards
-            metalBlock.transform.position = new Vector3(startPosition.x + 0.5f * hertzNumber, startPosition.y - 0.25f * hertzNumber, 0f);
             
         }
         else
@@ -83,12 +82,12 @@ public class magnetDownRange : MonoBehaviour
             valid1 = false;
         }
 
-        if(playerState.isShooting == true && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != downRange[0])
+        if(Input.GetMouseButtonDown(0) && checkRange() == true && playerState.isNegative == true && isTouching == true && metalBlock.transform.position != downRange[0])
         {
             valid1 = false;
             valid2 = true;
+            moveUp();
             //moves metal block upwards
-            metalBlock.transform.position = new Vector3((startPosition.x + 0.5f * hertzNumber) - 0.5f, (startPosition.y - 0.25f * hertzNumber) + 0.25f, 0f);
   
         }
         else
@@ -97,6 +96,17 @@ public class magnetDownRange : MonoBehaviour
         }
 
       
+    }
+
+    public void moveUp()
+    {
+        metalBlock.transform.Translate(-0.5f, 0.25f, 0f);
+        
+    }
+
+    public void moveDown()
+    {
+        metalBlock.transform.Translate(0.5f, -0.25f, 0f);
     }
 
 

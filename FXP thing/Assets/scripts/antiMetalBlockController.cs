@@ -8,7 +8,7 @@ public class antiMetalBlockController : MonoBehaviour
 
     void Start() 
     {
-        startPosition = this.GetComponent<Transform>().position;
+        
     }
 
     // Update is called once per frame
