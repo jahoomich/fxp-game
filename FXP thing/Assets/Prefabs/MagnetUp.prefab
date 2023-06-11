@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bdf506ad34b05d1478b961aa4515d221, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95b361dfea031e04da7ab0eeb459558e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,12 +159,10 @@ MonoBehaviour:
   highlightObject: {fileID: 0}
   magnetBlock: {fileID: 0}
   magnetBlockPosition: {x: 0, y: 0, z: 0}
-  endPosition: {x: 0, y: 0, z: 0}
-  hertz: {fileID: 0}
-  hertzNumber: 0
   player: {fileID: 0}
-  antiMetalBlock: {fileID: 0}
   isTouching: 0
+  valid1: 0
+  valid2: 0
 --- !u!1001 &2439900277635157478
 PrefabInstance:
   m_ObjectHideFlags: 0

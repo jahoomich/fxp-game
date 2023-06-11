@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class playerMovement : MonoBehaviour
 {
-    
+    [SerializeField] public Sprite facingUpSprite, facingDownSprite, facingLeftSprite, facingRightSprite;
     [SerializeField] public GameObject[] square = new GameObject [4];
     public bool[] playerDirectionsArray = new bool [4];
     private bool facingUp, facingDown, facingLeft, facingRight;
@@ -97,6 +97,23 @@ public class playerMovement : MonoBehaviour
             colliderArrayLoop();
             square[0].GetComponent<BoxCollider2D>().enabled = true;
 
+        }
+
+        if (playerDirectionsArray[0] == true)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = facingUpSprite;
+        }
+        else if (playerDirectionsArray[1] == true)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = facingDownSprite;
+        }
+        else if (playerDirectionsArray[2] == true)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = facingLeftSprite;
+        }
+        else if (playerDirectionsArray[3] == true)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = facingRightSprite;
         }
       
        

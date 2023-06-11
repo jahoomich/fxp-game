@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class level3antimetal : MonoBehaviour
 {
+    public TextMeshProUGUI destroyText;
     public GameObject magnetDown;
     private magnetDownRange magnetDownRange;
 
@@ -14,6 +16,7 @@ public class level3antimetal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        destroyText.text = "";
         magnetRightRange = magnetRight.GetComponent<magnetRightRange>();
         magnetDownRange = magnetDown.GetComponent<magnetDownRange>();
     }
@@ -32,6 +35,7 @@ public class level3antimetal : MonoBehaviour
 
         if (metalBlock.transform.position == this.transform.position)
         {
+            destroyText.text = "Uh Oh! The metal block has been destroyed!!!";
             metalBlock.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
